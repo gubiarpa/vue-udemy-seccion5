@@ -8,8 +8,14 @@
                 {{index + 1}} - {{ servicio }}
             </option>
         </select>
-        <AccionSaldo texto="Aumentar saldo" />
-        <AccionSaldo texto="Disminuir saldo" />
+        <AccionSaldo
+            texto="Aumentar saldo"
+            @accion="aumentar"
+        />
+        <AccionSaldo
+            texto="Disminuir saldo"
+            @accion="disminuir"
+        />
     </div>
 </template>
 
@@ -32,7 +38,11 @@ export default {
             this.saldo += 100;
         },
         disminuir() {
-            this.saldo -= 100;
+            if (this.saldo === 0) {
+                alert('Saldo agotado');
+            } else {
+                this.saldo -= 100;
+            }
         }
     }
 }

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <button>{{texto}}</button>
+        <button @click="accionBtn">{{texto}}</button>
     </div>
 </template>
 
@@ -8,6 +8,11 @@
 export default {
     props: {
         texto: String
+    },
+    methods: {
+        accionBtn() {
+            this.$emit('accion')
+        }
     }
 }
 </script>
