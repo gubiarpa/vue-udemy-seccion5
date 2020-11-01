@@ -15,6 +15,7 @@
         <AccionSaldo
             texto="Disminuir saldo"
             @accion="disminuir"
+            :desactivar="desactivar"
         />
     </div>
 </template>
@@ -30,18 +31,19 @@ export default {
             saldo: 1000,
             cuenta: 'Visa',
             estado: false,
-            servicios: ['giro', 'abono', 'transferencia']
+            servicios: ['giro', 'abono', 'transferencia'],
+            desactivar: false
         }
     },
     methods: {
         aumentar() {
             this.saldo += 100;
+            this.desactivar = false;
         },
         disminuir() {
+            this.saldo -= 100;
             if (this.saldo === 0) {
-                alert('Saldo agotado');
-            } else {
-                this.saldo -= 100;
+                this.desactivar = true;
             }
         }
     }

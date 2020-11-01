@@ -1,13 +1,17 @@
 <template>
     <div>
-        <button @click="accionBtn">{{texto}}</button>
+        <button @click="accionBtn" :disabled="desactivar">{{texto}}</button>
     </div>
 </template>
 
 <script>
 export default {
     props: {
-        texto: String
+        texto: String,
+        desactivar: {
+            type: Boolean,
+            default: false
+        }
     },
     methods: {
         accionBtn() {
