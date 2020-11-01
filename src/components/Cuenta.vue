@@ -8,11 +8,17 @@
                 {{index + 1}} - {{ servicio }}
             </option>
         </select>
+        <AccionSaldo texto="Aumentar saldo" />
+        <AccionSaldo texto="Disminuir saldo" />
     </div>
 </template>
 
 <script>
+import AccionSaldo from './AccionSaldo';
 export default {
+    components: {
+        AccionSaldo
+    },
     data() {
         return {
             saldo: 1000,
@@ -21,6 +27,14 @@ export default {
             servicios: ['giro', 'abono', 'transferencia']
         }
     },
+    methods: {
+        aumentar() {
+            this.saldo += 100;
+        },
+        disminuir() {
+            this.saldo -= 100;
+        }
+    }
 }
 </script>
 
